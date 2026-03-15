@@ -17,8 +17,12 @@ class StringPublisher(Node):
         self.get_logger().info(f'Publishing: "{msg.data}"')
         self.i += 1
 
-def main():
-    print('Hi from pub_sub_example.')
+def main(args=None):
+    rclpy.init(args=args)                   # Initialize ROS2 middleware
+    string_publisher = StringPublisher()
+    rclpy.spin(string_publisher)            # Keep node alive
+    string_publisher.destroy_node()
+    rclpy.shutdown()
 
 
 if __name__ == '__main__':
