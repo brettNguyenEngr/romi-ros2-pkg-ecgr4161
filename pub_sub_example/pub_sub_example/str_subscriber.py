@@ -1,3 +1,17 @@
+import rclpy
+from rclpy.node import Node
+from std_msgs.msg import String
+
+class StringSubscriber(Node):
+    def __init__(self):
+        super().__init__('str_subscriber')
+        self.subscription = self.create_subscription(
+            String,
+            'chatter',
+            self.listener_callback,
+            10)
+        self.subscription # Prevents unused variable warning
+
 def main():
     print('Hi from pub_sub_example.')
 
