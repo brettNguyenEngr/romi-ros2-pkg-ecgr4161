@@ -17,7 +17,11 @@ class StringSubscriber(Node):
         self.get_logger().info(f'Pi heard: "{msg.data}"')
 
 def main():
-    print('Hi from pub_sub_example.')
+    rclpy.init(args=args)
+    string_subscriber = StringSubscriber()
+    rclpy.spin(string_subscriber)
+    string_subscriber.destroy_node()
+    rclpy.shutdown()
 
 
 if __name__ == '__main__':
