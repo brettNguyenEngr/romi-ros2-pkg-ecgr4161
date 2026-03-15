@@ -10,6 +10,13 @@ class StringPublisher(Node):
         self.timer = self.create_timer(timer_period, self.timer_callback)
         self.i = 0
 
+    def timer_callback(self):
+        msg = String()
+        msg.data = f'Hello from Laptop: {self.i}'
+        self.publisher_.publish(msg)
+        self.get_logger().info(f'Publishing: "{msg.data}"')
+        self.i += 1
+
 def main():
     print('Hi from pub_sub_example.')
 
