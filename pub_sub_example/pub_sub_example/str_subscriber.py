@@ -12,6 +12,10 @@ class StringSubscriber(Node):
             10)
         self.subscription # Prevents unused variable warning
 
+    # This function executes whenever a message is received
+    def listener_callback(self, msg):
+        self.get_logger().info(f'Pi heard: "{msg.data}"')
+
 def main():
     print('Hi from pub_sub_example.')
 
