@@ -5,8 +5,8 @@ import sys, select, termios, tty
 
 # Key mapping: {key: (linear.x, angular.z)}
 KEY_BINDINGS = {
-    'w': ( 0.5,  0.0), # Forward
-    's': (-0.5,  0.0), # Backward
+    'w': ( 0.25,  0.0), # Forward
+    's': (-0.25,  0.0), # Backward
     'a': ( 0.0,  1.0), # Spin Left (Counter-Clockwise)
     'd': ( 0.0, -1.0), # Spin Right (Clockwise)
     ' ': ( 0.0,  0.0), # STOP (Spacebar)
