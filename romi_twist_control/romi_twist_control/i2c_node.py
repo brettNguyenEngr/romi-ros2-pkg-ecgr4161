@@ -1,8 +1,8 @@
 import rclpy
 from rclpy.node import Node
 
-# Import the custom message we will create (assuming we name it WheelSpeeds)
-# from romi_velocity_control.msg import WheelSpeeds
+# Import the custom WheelSpeeds message
+from romi_interfaces.msg import WheelSpeeds
 
 # Import Pololu's I2C helper class
 from .a_star import AStar
