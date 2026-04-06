@@ -59,6 +59,15 @@ class I2CBridgeNode(Node):
             # I2C can occasionally drop packets, it's good practice to catch this
     #        self.get_logger().error(f"I2C Communication Error: {e}")
 
+    def pwm_callback(self, msg):
+        left_pwm = int(msg.data[0])
+        right_pwm = int(msg.data[1])
+        try:
+            self.romi.motors(left_pwm, right_pwm)
+        except OSError as e:
+            self.get_logger().error(f"I2C PWM error: {e}")
+
+
 def main(args=None):
     rclpy.init(args=args)
     node = I2CBridgeNode()
