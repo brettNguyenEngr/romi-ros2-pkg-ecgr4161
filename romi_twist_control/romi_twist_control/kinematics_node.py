@@ -1,7 +1,7 @@
 import rclpy
 from rclpy.node import Node
 from geometry_msgs.msg import Twist
-from romi_interfaces.msg import WheelSpeeds
+from std_msgs.msg import Float32MultiArray
 
 class KinematicsNode(Node):
     def __init__(self):
@@ -17,8 +17,8 @@ class KinematicsNode(Node):
         
         # 2. Publish the WheelSpeeds (to the I2C node)
         self.publisher = self.create_publisher(
-            WheelSpeeds,
-            '/wheel_speeds',
+            Float32MultiArray,
+            '/target_speeds',
             10
         )
         
