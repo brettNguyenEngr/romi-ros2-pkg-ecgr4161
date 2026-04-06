@@ -12,6 +12,15 @@ class I2CBridgeNode(Node):
         
         # Initialize the hardware interface
         self.romi = AStar()
+
+        # Subscribe to pwm commands
+        self.subscription = self.create_subscription(
+            Int16MultiArray,
+            'wheel_pwm',
+            self.pwm_callback,
+            10
+        )
+        
         self.get_logger().info("AStar I2C Interface Initialized.")
 
         # Create the subscriber for the wheel speeds
