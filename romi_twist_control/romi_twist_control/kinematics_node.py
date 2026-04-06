@@ -45,17 +45,17 @@ class KinematicsNode(Node):
         v_right_mps = v + (omega * self.wheel_base / 2.0)
         
         # Convert m/s to raw motor PWM (-300 to 300)
-        left_pwm = int(v_left_mps * self.mps_to_pwm)
-        right_pwm = int(v_right_mps * self.mps_to_pwm)
+        # left_pwm = int(v_left_mps * self.mps_to_pwm)
+        # right_pwm = int(v_right_mps * self.mps_to_pwm)
         
         # Clamp the values to ensure we don't send illegal values to the 32U4
-        left_pwm = max(-300, min(300, left_pwm))
-        right_pwm = max(-300, min(300, right_pwm))
+        # left_pwm = max(-300, min(300, left_pwm))
+        # right_pwm = max(-300, min(300, right_pwm))
         
         # Create and publish the custom message
-        speed_msg = WheelSpeeds()
-        speed_msg.left = left_pwm
-        speed_msg.right = right_pwm
+        # speed_msg = WheelSpeeds()
+        # speed_msg.left = left_pwm
+        # speed_msg.right = right_pwm
         
         self.publisher.publish(speed_msg)
 
