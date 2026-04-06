@@ -56,6 +56,10 @@ class KinematicsNode(Node):
         # speed_msg = WheelSpeeds()
         # speed_msg.left = left_pwm
         # speed_msg.right = right_pwm
+
+        # Publish target speeds (m/s) using standard ros2 msg
+        speed_msg = Float32MultiArray()
+        speed_msg.data = [float(v_left_mps), float(v_right_mps)]
         
         self.publisher.publish(speed_msg)
 
