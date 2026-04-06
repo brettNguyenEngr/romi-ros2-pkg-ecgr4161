@@ -6,9 +6,6 @@ from .a_star import AStar
 # Import the custom WheelSpeeds message
 # from romi_interfaces.msg import WheelSpeeds
 
-# Import Pololu's I2C helper class
-from .a_star import AStar
-
 class I2CBridgeNode(Node):
     def __init__(self):
         super().__init__('i2c_bridge')
