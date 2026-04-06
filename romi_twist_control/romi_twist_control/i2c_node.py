@@ -67,6 +67,16 @@ class I2CBridgeNode(Node):
         except OSError as e:
             self.get_logger().error(f"I2C PWM error: {e}")
 
+    def read_encoders(self):
+        #a_star.py unpacks using 'hh' returning 2 32-bit integers
+        try:
+            left_ticks, right_ticks = self.romi.read_encoders()
+
+            msg = Int32MultiArray()
+            msg.data = [int(left_ticks), int(right_ticks)]
+            self.encoder_pub.publish(msg)
+        except OSError as e:
+            self.get_logger().error(f"I2C Encoder Read Error: {e}")
 
 def main(args=None):
     rclpy.init(args=args)
