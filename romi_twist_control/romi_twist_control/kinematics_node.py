@@ -66,7 +66,6 @@ class KinematicsNode(Node):
 def main(args=None):
     rclpy.init(args=args)
     node = KinematicsNode()
-    
     try:
         rclpy.spin(node)
     except KeyboardInterrupt:
