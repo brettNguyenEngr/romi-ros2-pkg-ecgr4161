@@ -16,7 +16,7 @@ class I2CBridgeNode(Node):
         # Subscribe to pwm commands (from PI node)
         self.subscription = self.create_subscription(
             Int16MultiArray,
-            'wheel_pwm',
+            '/wheel_pwm',
             self.pwm_callback,
             10
         )
