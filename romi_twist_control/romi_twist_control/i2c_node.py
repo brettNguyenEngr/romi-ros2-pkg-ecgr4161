@@ -4,7 +4,7 @@ from std_msgs.msg import Int16MultiArray, Int32MultiArray
 from .a_star import AStar
 
 # Import the custom WheelSpeeds message
-from romi_interfaces.msg import WheelSpeeds
+# from romi_interfaces.msg import WheelSpeeds
 
 # Import Pololu's I2C helper class
 from .a_star import AStar
