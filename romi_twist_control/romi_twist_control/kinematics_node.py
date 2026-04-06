@@ -29,7 +29,7 @@ class KinematicsNode(Node):
         # The Romi motors accept values from -300 to 300.
         # We need to map meters/second to this raw PWM value.
         # Assuming a max speed of ~0.5 m/s corresponds to 300 PWM:
-        self.mps_to_pwm = 300.0 / 0.5 
+        # self.mps_to_pwm = 300.0 / 0.5 
         
         self.get_logger().info("Kinematics Node Initialized.")
 
