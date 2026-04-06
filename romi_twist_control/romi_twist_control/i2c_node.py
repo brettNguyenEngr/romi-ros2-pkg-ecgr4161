@@ -13,7 +13,7 @@ class I2CBridgeNode(Node):
         # Initialize the hardware interface
         self.romi = AStar()
 
-        # Subscribe to pwm commands
+        # Subscribe to pwm commands (from PI node)
         self.subscription = self.create_subscription(
             Int16MultiArray,
             'wheel_pwm',
