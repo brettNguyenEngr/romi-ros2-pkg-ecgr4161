@@ -46,18 +46,18 @@ class I2CBridgeNode(Node):
 
         self.get_logger().info("AStar I2C Interface Initialized.")
 
-    def speeds_callback(self, msg):
+    # def speeds_callback(self, msg):
         # Extract the speeds from the message
         # The 32U4 expects 16-bit integers (roughly -300 to 300 for raw PWM)
-        left_speed = int(msg.left)
-        right_speed = int(msg.right)
+    #    left_speed = int(msg.left)
+    #    right_speed = int(msg.right)
         
-        try:
+    #    try:
             # Send the speeds over I2C using Pololu's function
-            self.romi.motors(left_speed, right_speed)
-        except OSError as e:
+    #        self.romi.motors(left_speed, right_speed)
+    #    except OSError as e:
             # I2C can occasionally drop packets, it's good practice to catch this
-            self.get_logger().error(f"I2C Communication Error: {e}")
+    #        self.get_logger().error(f"I2C Communication Error: {e}")
 
 def main(args=None):
     rclpy.init(args=args)
