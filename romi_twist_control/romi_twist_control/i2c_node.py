@@ -16,12 +16,12 @@ class I2CBridgeNode(Node):
 
         # Create the subscriber for the wheel speeds
         # NOTE: We are commenting out the actual subscription until we build the msg file
-        self.subscription = self.create_subscription(
-            WheelSpeeds,
-            '/wheel_speeds',
-            self.speeds_callback,
-            10
-        )
+        # self.subscription = self.create_subscription(
+        #     WheelSpeeds,
+        #    '/wheel_speeds',
+        #    self.speeds_callback,
+        #    10
+        #)
         
         # Safety: Ensure motors start at 0
         self.romi.motors(0, 0)
