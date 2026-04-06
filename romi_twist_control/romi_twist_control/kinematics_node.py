@@ -15,7 +15,7 @@ class KinematicsNode(Node):
             10
         )
         
-        # 2. Publish the WheelSpeeds (to the I2C node)
+        # 2. Publish the target speeds (to the PI node)
         self.publisher = self.create_publisher(
             Float32MultiArray,
             '/target_speeds',
