@@ -26,9 +26,11 @@ class I2CBridgeNode(Node):
             Int32MultiArray,
             '/encoder_ticks',
             10
-        ) 
+        )
+
+        # Read encoders at 50Hz
+        self.timer = self.create_timer(0.02, self.read_encoders)
         
-        self.get_logger().info("AStar I2C Interface Initialized.")
 
         # Create the subscriber for the wheel speeds
         # NOTE: We are commenting out the actual subscription until we build the msg file
@@ -41,6 +43,8 @@ class I2CBridgeNode(Node):
         
         # Safety: Ensure motors start at 0
         self.romi.motors(0, 0)
+
+        self.get_logger().info("AStar I2C Interface Initialized.")
 
     def speeds_callback(self, msg):
         # Extract the speeds from the message
