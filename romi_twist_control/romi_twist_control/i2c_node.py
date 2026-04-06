@@ -20,6 +20,13 @@ class I2CBridgeNode(Node):
             self.pwm_callback,
             10
         )
+
+        # Publisher for encoder ticks
+        self.encoder_pub = self.create_publisher(
+            Int32MultiArray,
+            '/encoder_ticks',
+            10
+        ) 
         
         self.get_logger().info("AStar I2C Interface Initialized.")
 
