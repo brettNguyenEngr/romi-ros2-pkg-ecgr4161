@@ -98,7 +98,7 @@ class PINode(Node):
             
         pwm = (self.Kp * error) + (self.Ki * integral)
         
-        # Clamp to 300 and apply Anti-Windup
+        # Clamp to 300
         if pwm > 300:
             pwm = 300.0
             if side == 'left': self.integral_left -= error * dt
