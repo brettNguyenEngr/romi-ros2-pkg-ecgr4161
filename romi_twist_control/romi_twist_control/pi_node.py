@@ -78,13 +78,12 @@ class PINode(Node):
         self.pwm_pub.publish(pwm_msg)
         
         # --- DASHBOARD LOGGING ---
-        # Only print if we are actually commanding a speed, to keep the terminal clean
-        if self.target_left_mps != 0.0:
+        # Only print if we are commanding a speed to keep the terminal clean
+        if self.target_left_mps != 0.0 or self.target_right_mps != 0.0:
+            # Format: L: Target / Actual / PWM | R: Target / Actual / PWM
             self.get_logger().info(
-                f"Tgt: {self.target_left_mps:.2f} m/s | "
-                f"Act: {actual_left_mps:.2f} m/s | "
-                f"Err: {error_left:.3f} | "
-                f"PWM: {pwm_left:.0f}"
+                f"L: {self.target_left_mps:.2f} / {actual_left_mps:.2f} / {pwm_left:4.0f} | "
+                f"R: {self.target_right_mps:.2f} / {actual_right_mps:.2f} / {pwm_right:4.0f}"
             )
             
     def calculate_pi_pwm(self, error, dt, side):
