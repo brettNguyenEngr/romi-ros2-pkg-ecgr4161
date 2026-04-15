@@ -13,8 +13,8 @@ class PINode(Node):
         
         # --- TUNING PARAMETERS ---
         # You will need to tune these values!
-        self.Kp = 400.0  
-        self.Ki = 100.0   
+        self.Kp = 0.0  
+        self.Ki = 0.0   
         
         # --- ROBOT CONSTANTS ---
         self.wheel_circumference = math.pi * 0.07 # 70mm diameter
