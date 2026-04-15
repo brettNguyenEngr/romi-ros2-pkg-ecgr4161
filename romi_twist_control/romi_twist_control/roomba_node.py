@@ -8,11 +8,11 @@ class RoombaNode(Node):
     def __init__(self):
         super().__init__('roomba_node')
         
-        # 1. Setup Publisher (to Kinematics) and Subscriber (from Lidar)
+        # Setup Publisher (to Kinematics) and Subscriber (from Lidar)
         self.publisher = self.create_publisher(Twist, '/cmd_vel', 10)
         self.subscription = self.create_subscription(LaserScan, '/scan', self.lidar_callback, 10)
         
-        # 2. Configurable Parameters (Standard Roomba behavior)
+        # Configurable Parameters (Standard Roomba behavior)
         self.declare_parameter('forward_speed', 0.20)  # m/s
         self.declare_parameter('turning_speed', 1.0)   # rad/s
         self.declare_parameter('safe_dist', 0.5)       # meters (stop distance)
