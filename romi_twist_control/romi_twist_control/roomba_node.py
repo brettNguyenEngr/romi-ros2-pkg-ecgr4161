@@ -17,7 +17,7 @@ class RoombaNode(Node):
         self.declare_parameter('turning_speed', 1.0)   # rad/s
         self.declare_parameter('safe_dist', 0.5)       # meters (stop distance)
         
-        self.get_logger().info("Dumb Roomba Node Initialized. Looking for obstacles...")
+        self.get_logger().info("Roomba Node Initialized. Looking for obstacles...")
 
     def lidar_callback(self, msg):
         """
