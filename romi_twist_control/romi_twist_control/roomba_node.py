@@ -25,7 +25,7 @@ class RoombaNode(Node):
         """
         # RPLidar A1 typically has 360 points. 
         # Front is usually the beginning and end of the array.
-        # We take 20 degrees on both sides of 0.
+        # Take 20 degrees on both sides of 0.
         front_left = msg.ranges[0:20]
         front_right = msg.ranges[340:360]
         
