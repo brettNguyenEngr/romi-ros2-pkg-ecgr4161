@@ -7,7 +7,7 @@ class KinematicsNode(Node):
     def __init__(self):
         super().__init__('kinematics_node')
         
-        # 1. Subscribe to the Twist commands (from teleop)
+        # Subscribe to the Twist commands (from teleop)
         self.subscription = self.create_subscription(
             Twist,
             '/cmd_vel',
@@ -15,14 +15,14 @@ class KinematicsNode(Node):
             10
         )
         
-        # 2. Publish the target speeds (to the PI node)
+        # Publish the target speeds (to the PI node)
         self.publisher = self.create_publisher(
             Float32MultiArray,
             '/target_speeds',
             10
         )
         
-        # 3. Robot Physical Parameters (for the Pololu Romi)
+        # Robot Physical Parameters (for the Pololu Romi)
         self.wheel_base = 0.141 # Distance between wheels in meters (14.1 cm)
         
         # 4. Conversion Factors
