@@ -25,12 +25,6 @@ class KinematicsNode(Node):
         # Robot Physical Parameters (for the Pololu Romi)
         self.wheel_base = 0.141 # Distance between wheels in meters (14.1 cm)
         
-        # 4. Conversion Factors
-        # The Romi motors accept values from -300 to 300.
-        # We need to map meters/second to this raw PWM value.
-        # Assuming a max speed of ~0.5 m/s corresponds to 300 PWM:
-        # self.mps_to_pwm = 300.0 / 0.5 
-        
         self.get_logger().info("Kinematics Node Initialized.")
 
     def twist_callback(self, msg):
@@ -39,23 +33,8 @@ class KinematicsNode(Node):
         omega = msg.angular.z # rad/s
         
         # Calculate individual wheel velocities in m/s
-        # V_left = v - (omega * L / 2)
-        # V_right = v + (omega * L / 2)
         v_left_mps = v - (omega * self.wheel_base / 2.0)
         v_right_mps = v + (omega * self.wheel_base / 2.0)
-        
-        # Convert m/s to raw motor PWM (-300 to 300)
-        # left_pwm = int(v_left_mps * self.mps_to_pwm)
-        # right_pwm = int(v_right_mps * self.mps_to_pwm)
-        
-        # Clamp the values to ensure we don't send illegal values to the 32U4
-        # left_pwm = max(-300, min(300, left_pwm))
-        # right_pwm = max(-300, min(300, right_pwm))
-        
-        # Create and publish the custom message
-        # speed_msg = WheelSpeeds()
-        # speed_msg.left = left_pwm
-        # speed_msg.right = right_pwm
 
         # Publish target speeds (m/s) using standard ros2 msg
         speed_msg = Float32MultiArray()
