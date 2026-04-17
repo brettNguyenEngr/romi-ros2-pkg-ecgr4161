@@ -53,26 +53,26 @@ class PINode(Node):
             self.prev_right_ticks = current_right_ticks
             return 
             
-        # 1. Calculate Delta Ticks (handling 16-bit integer wrap from AStar)
+        # Calculate Delta Ticks (handling 16-bit integer wrap from AStar)
         delta_left = self.calculate_delta(current_left_ticks, self.prev_left_ticks)
         delta_right = self.calculate_delta(current_right_ticks, self.prev_right_ticks)
         
         self.prev_left_ticks = current_left_ticks
         self.prev_right_ticks = current_right_ticks
         
-        # 2. Convert raw ticks into Actual Meters per Second
+        # Convert raw ticks into Actual Meters per Second
         actual_left_mps = (delta_left / self.ticks_per_rev_wheel) * self.wheel_circumference / dt
         actual_right_mps = (delta_right / self.ticks_per_rev_wheel) * self.wheel_circumference / dt
         
-        # 3. Calculate Error
+        # Calculate Error
         error_left = self.target_left_mps - actual_left_mps
         error_right = self.target_right_mps - actual_right_mps
         
-        # 4. PI Algorithm & Clamping
+        # PI Algorithm & Clamping
         pwm_left = self.calculate_pi_pwm(error_left, dt, 'left')
         pwm_right = self.calculate_pi_pwm(error_right, dt, 'right')
             
-        # 5. Publish to I2C Node
+        # Publish to I2C Node
         pwm_msg = Int16MultiArray()
         pwm_msg.data = [int(pwm_left), int(pwm_right)]
         self.pwm_pub.publish(pwm_msg)
