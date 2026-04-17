@@ -12,10 +12,10 @@ class OdometryNode(Node):
         super().__init__('odometry_node')
 
         # --- ROBOT CONSTANTS ---
-        # Using the constants from your PI node and Kinematics node
+        # Using the constants from PI and Kinematics node
         self.wheel_circumference = math.pi * 0.07  # 70mm diameter
         self.ticks_per_rev = 1440.0                # 12 * 120 gear ratio
-        self.wheel_base = 0.141                    # Distance between wheels in meters
+        self.wheel_base = 0.141                    # Distance between wheels (m)
 
         # --- STATE VARIABLES (Global Position) ---
         self.x = 0.0
@@ -54,7 +54,7 @@ class OdometryNode(Node):
         self.prev_left_ticks = current_left_ticks
         self.prev_right_ticks = current_right_ticks
 
-        # Convert Ticks to Distance (Meters)
+        # Convert Ticks to Distance (m)
         d_left = (delta_left_ticks / self.ticks_per_rev) * self.wheel_circumference
         d_right = (delta_right_ticks / self.ticks_per_rev) * self.wheel_circumference
 
