@@ -27,7 +27,9 @@ setup(
             'teleop_node = romi_twist_control.teleop_node:main',
             'i2c_node = romi_twist_control.i2c_node:main',
             'kinematics_node = romi_twist_control.kinematics_node:main',
-            'pi_node = romi_twist_control.pi_node:main'
+            'pi_node = romi_twist_control.pi_node:main',
+            'roomba_node = romi_twist_control.roomba_node:main',
+            'odometry_node = romi_twist_control.odometry_node:main'
         ],
     },
 )
