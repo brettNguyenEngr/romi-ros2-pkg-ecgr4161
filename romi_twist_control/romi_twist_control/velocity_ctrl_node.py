@@ -15,9 +15,9 @@ class VelocityCtrlNode(Node):
         self.pwm_pub = self.create_publisher(Int16MultiArray, '/wheel_pwm', 10)
         
         # --- ROBOT CONSTANTS ---
-        self.wheel_base = 0.141 
-        self.wheel_circumference = math.pi * 0.07 
-        self.ticks_per_rev_wheel = 12.0 * 120.0 # 12 cts/rev * 120 gear ratio = 1440 ticks
+        self.wheel_base = 0.141                     # Distance b/t wheels (m)
+        self.wheel_circumference = math.pi * 0.07   # 70mm diameter
+        self.ticks_per_rev_wheel = 12.0 * 120.0     # 12 cts/rev * 120 gear ratio = 1440 ticks
         
         # --- TUNING PARAMETERS ---
         self.Kp = 600.0
