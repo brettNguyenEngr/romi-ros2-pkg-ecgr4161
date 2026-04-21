@@ -20,11 +20,11 @@ class RomiBaseNode(Node):
         self.tf_broadcaster = TransformBroadcaster(self)
         
         # --- ROBOT CONSTANTS ---
-        self.wheel_base = 0.141 
-        self.wheel_circumference = math.pi * 0.07 
-        self.ticks_per_rev_wheel = 1440.0
-        self.Kp = 600.0  
-        self.Ki = 400.0   
+        self.wheel_base = 0.141                     # Distance b/t wheels (m)
+        self.wheel_circumference = math.pi * 0.07   # 70mm diameter
+        self.ticks_per_rev_wheel = 1440.0           # 12 cts/rev * 120 gear ratio = 1440 ticks
+        self.Kp = 600.0
+        self.Ki = 400.0
         
         # --- INTERNAL STATE VARIABLES ---
         self.target_left_mps = 0.0
