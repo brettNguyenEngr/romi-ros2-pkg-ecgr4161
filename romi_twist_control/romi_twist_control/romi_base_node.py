@@ -23,6 +23,8 @@ class RomiBaseNode(Node):
         self.wheel_base = 0.141                     # Distance b/t wheels (m)
         self.wheel_circumference = math.pi * 0.07   # 70mm diameter
         self.ticks_per_rev_wheel = 1440.0           # 12 cts/rev * 120 gear ratio = 1440 ticks
+        
+        # --- TUNING PARAMETERS ---
         self.Kp = 600.0
         self.Ki = 400.0
         
