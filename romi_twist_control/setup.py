@@ -30,7 +30,8 @@ setup(
             'pi = romi_twist_control.pi_node:main',
             'roomba = romi_twist_control.roomba_node:main',
             'odometry = romi_twist_control.odometry_node:main',
-            'velocity_ctrl = romi_twist_control.velocity_ctrl_node:main'
+            'velocity_ctrl = romi_twist_control.velocity_ctrl_node:main',
+            'romi_base = romi_twist_control.romi_base_node:main'
         ],
     },
 )
