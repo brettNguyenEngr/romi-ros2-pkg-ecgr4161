@@ -81,6 +81,12 @@ class VelocityCtrlNode(Node):
         pwm_msg = Int16MultiArray()
         pwm_msg.data = [int(pwm_left), int(pwm_right)]
         self.pwm_pub.publish(pwm_msg)
+
+        # Dashboard Logging (for PI tuning)
+        self.get_logger().info(
+            f"L: {self.target_left_mps:.2f} / {actual_left_mps:.2f} / {pwm_left:4.0f} | "
+            f"R: {self.target_right_mps:.2f} / {actual_right_mps:.2f} / {pwm_right:4.0f}"
+        )
         
     def calculate_pi_pwm(self, error, dt, side):
         if side == 'left':
