@@ -125,6 +125,16 @@ class VelocityCtrlNode(Node):
         # =========================================================================
         
         pwm = 0.0 # Replace this entire section with your control logic
+
+        # Anti-windup clamping
+        if pwm > 300:
+            pwm = 300.0
+            if side == 'left': self.integral_left -= error * dt
+            else: self.integral_right -= error * dt
+        elif pwm < -300:
+            pwm = -300.0
+            if side == 'left': self.integral_left -= error * dt
+            else: self.integral_right -= error * dt
             
         return pwm
 
