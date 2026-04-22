@@ -116,12 +116,7 @@ class VelocityCtrlNode(Node):
         # 1. Update the appropriate integral accumulator (self.integral_left or 
         #    self.integral_right) by adding (error * dt).
         # 2. Calculate the raw PWM using the PI equation: (Kp * error) + (Ki * integral)
-        # 3. Clamp the PWM output so it does not exceed the hardware limits 
-        #    of the Romi motors (-300 to 300).
-        # 4. Anti-Windup: If the PWM was clamped, "unwind" the integral by 
-        #    subtracting the (error * dt) you just added to prevent it from growing 
-        #    infinitely while the motors are maxed out.
-        # 5. Return the final clamped PWM value.
+        # 3. Return the final clamped PWM value.
         # =========================================================================
         
         pwm = 0.0 # Replace this entire section with your control logic
