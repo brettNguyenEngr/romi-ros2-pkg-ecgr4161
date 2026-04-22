@@ -10,6 +10,14 @@ class I2CBridgeNode(Node):
         # Initialize the hardware interface
         self.romi = AStar()
 
+        # Subscribe to LED commands (from Laptop node)
+        self.led_subscription = self.create_subscription(
+            Int16MultiArray,
+            '/leds',
+            self.led_callback,
+            10
+        )
+
         # Subscribe to pwm commands (from PI node)
         self.subscription = self.create_subscription(
             Int16MultiArray,
@@ -32,6 +40,18 @@ class I2CBridgeNode(Node):
         self.romi.motors(0, 0)
 
         self.get_logger().info("AStar I2C Interface Initialized.")
+
+    def led_callback(self, msg):
+        # Ensure we received an array of 3 values
+        if len(msg.data) >= 3:
+            red = int(msg.data[0])
+            yellow = int(msg.data[1])
+            green = int(msg.data[2])
+            
+            try:
+                self.romi.leds(red, yellow, green)
+            except OSError as e:
+                self.get_logger().error(f"I2C LED error: {e}")
 
     def pwm_callback(self, msg):
         left_pwm = int(msg.data[0])
